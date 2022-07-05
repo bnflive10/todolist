@@ -12,6 +12,14 @@ class MainController extends Controller
     public function home(){
 
 
-        dd(task::all());
+        //buscar tasks disponiveis
+        $tasks = Task::all();
+
+        return view('home', ['tasks'=>$tasks]);
+    }
+
+    public function new_task(){
+
+        echo 'adicionar task';
     }
 }

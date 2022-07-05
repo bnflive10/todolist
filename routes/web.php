@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainController::class, 'home'])->name('home');
+Route::get('/new_task',[MainController::class, 'new_task'])->name('new_task');
