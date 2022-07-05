@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'home'])->name('home');
 Route::get('/new_task',[MainController::class, 'new_task'])->name('new_task');
+Route::post('new_task_submit',[MainController::class, 'new_task_submit'])->name('new_task_submit');

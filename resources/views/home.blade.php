@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col">
 
@@ -18,35 +18,61 @@
                 @if ($tasks->count() === 0)
                     <p>nao existem tarefas disponiveis</p>
                 @else
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Tarefa</th>
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Tarefa</th>
+                                <th scope="col" class="text-right">Acçoes</th>
 
-                                        </tr>
-                                    </thead>
+                            </tr>
+                        </thead>
 
-                                    <tbody>
+                        <tbody>
 
-                                        @foreach ($tasks as $task)
-                                            <tr>
-                                                <th scope="row">{{ $task->id }}</th>
-                                                <td>{{ $task->task }}</td>
+                            @foreach ($tasks as $task)
+                                <tr>
+                                    <th>{{ $task->id }}</th>
+                                    <td width="70%">{{ $task->task }}</td>
+                                    <td class="text-right">
+                                        {{-- Done not done --}}
+                                        @if ($task->done === null)
+                                            <a href="" class="btn btn-primary btn-sm mr-2" style="width: 15%"><i
+                                                    class="fa fa-check"></i></a>
+                                        @else
+                                            <a href="" class="btn btn-success btn-sm mr-2" style="width: 15%"><i
+                                                    class="fa fa-times"></i></a>
+                                        @endif
 
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                        {{-- editar --}}
+                                        <a href="" class="btn btn-primary btn-sm mr-2" style="width: 15%"><i
+                                                class="fa fa-pencil"></i></a>
+
+                                        {{-- Visivel/invisivel --}}
+                                        @if ($task->visible === 1)
+                                            <a href="" class="btn btn-primary btn-sm" style="width: 15%"><i
+                                                    class="fa fa-eye-slash"></i></a>
+                                        @else
+                                            <a href="" class="btn btn-primary btn-sm" style="width: 15%"><i
+                                                    class="fa-solid fa-eye"></i></a>
+                                        @endif
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col text-right">
+                            <p>Total: {{ $tasks->count() }}</p>
                         </div>
                     </div>
-                @endif
-
             </div>
+            @endif
+
+
         </div>
     </div>
 @endsection
