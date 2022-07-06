@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MainController::class, 'home'])->name('home');
 
+//list invisible tasks
+Route::get('/list_invisibles',[MainController::class, 'list_invisibles'])->name('list_invisibles');
+
 //new task routes
 Route::get('/new_task',[MainController::class, 'new_task'])->name('new_task');
 Route::post('/new_task_submit',[MainController::class, 'new_task_submit'])->name('new_task_submit');
@@ -27,3 +30,7 @@ Route::get('/task_undone/{id}', [MainController::class, 'task_undone'])->name('t
 //edit task routes
 Route::get('/edit_task/{id}',[MainController::class, 'edit_task'])->name('edit_task');
 Route::post('/edit_task_submit',[MainController::class, 'edit_task_submit'])->name('edit_task_submit');
+
+//visible/invisible task icon
+Route::get('/task_visible/{id}',[MainController::class, 'task_visible'])->name('task_visible');
+Route::get('/task_invisible/{id}',[MainController::class, 'task_invisible'])->name('task_invisible');

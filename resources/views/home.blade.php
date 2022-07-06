@@ -10,8 +10,10 @@
                 <hr>
                 <div class="my-2">
                     <a href="{{ route('new_task') }}" class="btn btn-primary">Criar tarefa</a>
+                    <a href="{{ route('list_invisibles') }}" class="btn btn-primary">Listar invisivel</a>
 
                 </div>
+                
                 <hr>
 
 
@@ -51,10 +53,10 @@
 
                                         {{-- Visivel/invisivel --}}
                                         @if ($task->visible === 1)
-                                            <a href="" class="btn btn-primary btn-sm" style="width: 15%"><i
+                                            <a href="{{route('task_invisible',$task->id)}}" class="btn btn-primary btn-sm" style="width: 15%"><i
                                                     class="fa fa-eye-slash"></i></a>
                                         @else
-                                            <a href="" class="btn btn-primary btn-sm" style="width: 15%"><i
+                                            <a href="{{route('task_visible',$task->id)}}" class="btn btn-primary btn-sm" style="width: 15%"><i
                                                     class="fa-solid fa-eye"></i></a>
                                         @endif
                                     </td>
