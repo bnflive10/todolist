@@ -37,15 +37,16 @@
                                     <td class="text-right">
                                         {{-- Done not done --}}
                                         @if ($task->done === null)
-                                            <a href="" class="btn btn-primary btn-sm mr-2" style="width: 15%"><i
+                                            <a href="{{route('task_done',['id'=>$task->id])}}" class="btn btn-primary btn-sm mr-2" style="width: 15%"><i
                                                     class="fa fa-check"></i></a>
                                         @else
-                                            <a href="" class="btn btn-success btn-sm mr-2" style="width: 15%"><i
+                                            <a href="{{route('task_undone',['id'=>$task->id])}}" class="btn btn-success btn-sm mr-2" style="width: 15%"><i
                                                     class="fa fa-times"></i></a>
+                                                    
                                         @endif
 
                                         {{-- editar --}}
-                                        <a href="" class="btn btn-primary btn-sm mr-2" style="width: 15%"><i
+                                        <a href="{{route('edit_task',['id'=>$task->id])}}" class="btn btn-primary btn-sm mr-2" style="width: 15%"><i
                                                 class="fa fa-pencil"></i></a>
 
                                         {{-- Visivel/invisivel --}}
@@ -69,6 +70,7 @@
                             <p>Total: {{ $tasks->count() }}</p>
                         </div>
                     </div>
+                    {{$tasks->links()}}
             </div>
             @endif
 

@@ -13,13 +13,14 @@
             </div>
         </div>
 
-        <form method="POST" action="{{ route('new_task_submit') }}">
+        <form method="POST" action="{{ route('edit_task_submit') }}">
             @csrf
+            <input type="hidden" name="task_id" value="{{$task->id}}">
             <div class="row">
                 <div class="col-sm-4 offset-sm-4">
                     <div class="form-group">
                         <label for="text_new_task">Nova Tarefa</label>
-                        <input type="text" name="text_new_task" id="text_new_task" class="form-control">
+                        <input type="text" name="text_edit_task" id="text_edit_task" value="{{$task->task}}" class="form-control">
                     </div>
                     <div class="form-group">
                         <a href="{{route('home')}}" class="btn btn-secondary">Cancelar</a>
